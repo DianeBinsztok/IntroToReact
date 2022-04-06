@@ -2,54 +2,98 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./style.css";
 
-class Square extends React.Component {
-  render() {
-    return <button className="square">{/* TODO */}</button>;
-  }
-}
+const questions = [
+  {
+    title: "first question",
+    options: ["salut", "hello", "random", "hi", "stuff"],
+    correct: "hello",
+    answer: "The answer is: hello. He's an explanation why...",
+  },
+  {
+    title: "first question",
+    options: ["titi", "tata", "toto", "tutu", "fifou"],
+    correct: "fifou",
+    answer: "The answer is: fifou. He's an explanation why...",
+  },
+  {
+    title: "third question",
+    options: ["blabla", "blabla", "blublu", "blabli", "blubla"],
+    correct: "blabli",
+    answer: "The answer is: blabli. He's an explanation why...",
+  },
+  {
+    title: "fourth question",
+    options: ["salut", "hello", "random", "hi", "stuff"],
+    correct: "hello",
+    answer: "The answer is: hello. He's an explanation why...",
+  },
+];
 
-class Board extends React.Component {
-  renderSquare(i) {
-    return <Square />;
-  }
+console.log(questions[0].correct);
 
-  render() {
-    const status = "Next player: X";
+// Components:
 
-    return (
-      <div>
-        <div className="status">{status}</div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-      </div>
-    );
-  }
-}
+class Cards extends React.Component {}
 
-class Game extends React.Component {
+class Card extends React.Component {
   render() {
     return (
-      <div className="game">
-        <div className="game-board">
-          <Board />
-        </div>
-        <div className="game-info">
-          <div>{/* status */}</div>
-          <ol>{/* TODO */}</ol>
-        </div>
+      <div className="card">
+        <h3>{questions[0].title}</h3>
+        <ul>
+          <li>
+            <input
+              type="checkbox"
+              name={questions[0].options[0]}
+              className="wrong"
+            />
+            <label htmlFor={questions[0].options[0]}>
+              {questions[0].options[0]}
+            </label>
+          </li>
+          <li>
+            <input
+              type="checkbox"
+              name={questions[0].options[1]}
+              className="correct"
+            />
+            <label htmlFor={questions[0].options[1]}>
+              {questions[0].options[1]}
+            </label>
+          </li>
+          <li>
+            <input
+              type="checkbox"
+              name={questions[0].options[2]}
+              className="wrong"
+            />
+            <label htmlFor={questions[0].options[2]}>
+              {questions[0].options[2]}
+            </label>
+          </li>
+          <li>
+            <input
+              type="checkbox"
+              name={questions[0].options[3]}
+              className="wrong"
+            />
+            <label htmlFor={questions[0].options[3]}>
+              {questions[0].options[3]}
+            </label>
+          </li>
+          <li>
+            <input
+              type="checkbox"
+              name="{questions[0].options[4]}"
+              className="wrong"
+            />
+            <label htmlFor="{questions[0].options[4]}">
+              {questions[0].options[4]}
+            </label>
+          </li>
+        </ul>
+        <p className="answer hidden">{questions[0].answer}</p>
+        <input className="submit" type="submit" value="submit" />
       </div>
     );
   }
@@ -57,4 +101,4 @@ class Game extends React.Component {
 
 // ========================================
 
-ReactDOM.render(<Game />, document.getElementById("root"));
+ReactDOM.render(<Card />, document.getElementById("root"));
